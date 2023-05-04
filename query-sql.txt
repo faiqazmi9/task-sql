@@ -1,0 +1,90 @@
+-- Select *
+select * from employees e;
+
+-- Select some column
+select employeeNumber , firstName , lastName , email from employees e;
+
+-- Select using sorting
+select
+employeeNumber,
+firstName,
+lastName,
+email
+from
+employees e
+order by firstName desc;
+
+-- Join table
+select
+e.employeeNumber,
+e.firstName,
+e.lastName,
+e.email,
+o.phone,
+o.addressLine1,
+o.addressLine2,
+o.state,
+o.country 
+from
+employees e
+join offices o on e.officeCode = o.officeCode 
+order by firstName desc;
+
+-- Join using where
+select
+e.employeeNumber,
+e.firstName,
+e.lastName,
+e.email,
+o.phone,
+o.addressLine1,
+o.addressLine2,
+o.state,
+o.country 
+from
+employees e
+join offices o on e.officeCode = o.officeCode 
+where o.country = 'Australia'
+order by firstName desc;
+
+-- Select Count
+select
+count(*) 
+from
+employees e
+join offices o on e.officeCode = o.officeCode 
+where o.country = 'Australia'
+order by firstName desc;
+
+-- Select Agregate
+select
+jobTitle,
+count(*)
+from
+employees e
+group by jobTitle ;
+
+-- Create table
+CREATE TABLE Patient
+(PatientID char(5) PRIMARY KEY,
+PatientName varchar(30));
+
+-- Insert into table
+insert into
+patient(PatientID, PatientName)
+VALUES
+('1', 'Aku');
+
+-- Update table
+update patient
+set PatientName = 'Dia'
+where PatientID = '1';
+
+-- Select AVG
+select avg(buyPrice) AS harga_beli from products p ;
+
+-- Select using numeric operation
+select * from products p where buyPrice >= 90;
+
+-- Select using text operation
+select * from products p where productName like '%ferrari%';
